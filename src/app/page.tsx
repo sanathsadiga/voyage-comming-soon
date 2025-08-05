@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script";
+
 
 declare global {
   interface Window {
@@ -67,23 +69,25 @@ export default function Home() {
     <>
       <Analytics />
       
-      <Head>
-        <title>Voyage Forge</title>
-        <meta name="description" content="Launch your travel business with our powerful CMS platform" />
-        
-        {/* ✅ Google Analytics Tag */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5K3W462PN"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-D5K3W462PN');
-            `,
-          }}
-        />
-      </Head>
+      <Script
+  strategy="afterInteractive"
+  src={`https://www.googletagmanager.com/gtag/js?id=G-D5K3W462PN`}
+/>
+<Script
+  id="gtag-init"
+  strategy="afterInteractive"
+  dangerouslySetInnerHTML={{
+    __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D5K3W462PN', {
+        page_path: window.location.pathname,
+      });
+    `,
+  }}
+/>
+
       {/* HERO SECTION */}
       <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-700 via-indigo-800 to-blue-900 text-center relative overflow-hidden px-4">
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
