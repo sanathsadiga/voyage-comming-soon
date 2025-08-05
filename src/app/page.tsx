@@ -5,6 +5,7 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 declare global {
@@ -68,6 +69,7 @@ export default function Home() {
   return (
     <>
       <Analytics />
+      <SpeedInsights/>
       
       <Script
   strategy="afterInteractive"
@@ -228,7 +230,9 @@ export default function Home() {
         <p className="text-gray-400">&copy; {new Date().getFullYear()} Travel CMS. All rights reserved.</p>
 
       </footer>
+      <SpeedInsights/>
       <Analytics/>
+      
     </>
 
   );
