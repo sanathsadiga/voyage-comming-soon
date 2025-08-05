@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
+import { Analytics } from "@vercel/analytics/next"
 
 declare global {
   interface Window {
     Calendly: {
-  initPopupWidget?: (options: { url: string }) => void;
-};
+      initPopupWidget?: (options: { url: string }) => void;
+    };
 
   }
 }
@@ -64,6 +65,7 @@ export default function Home() {
 
   return (
     <>
+      <Analytics />
       <Head>
         <title>Travel CMS – Coming Soon</title>
         <meta
@@ -139,8 +141,8 @@ export default function Home() {
       <section className="py-20 px-4 bg-gradient-to-br from-indigo-900 via-purple-800 to-fuchsia-900 text-center">
         <h2 className="text-3xl font-bold mb-6 text-white">Join Our Waitlist</h2>
         <p className="text-gray-300 mb-10">
-  Be the first to know when we launch. We&rsquo;ll also give you early access perks!
-</p>
+          Be the first to know when we launch. We&rsquo;ll also give you early access perks!
+        </p>
 
 
         {submitted ? (
@@ -176,9 +178,8 @@ export default function Home() {
             <button
               type="submit"
               disabled={loading}
-              className={`$${
-                loading ? "bg-yellow-300" : "bg-yellow-400 hover:bg-yellow-500"
-              } text-black font-bold py-3 px-6 rounded transition w-full`}
+              className={`$${loading ? "bg-yellow-300" : "bg-yellow-400 hover:bg-yellow-500"
+                } text-black font-bold py-3 px-6 rounded transition w-full`}
             >
               {loading ? "Submitting..." : "Join Waitlist"}
             </button>
@@ -201,14 +202,14 @@ export default function Home() {
 
       <motion.button
         onClick={() => {
-  if (typeof window !== "undefined" && window.Calendly?.initPopupWidget) {
-    window.Calendly.initPopupWidget({
-      url: "https://calendly.com/founder-voyage-forge/30min?hide_event_type_details=1&hide_gdpr_banner=1",
-    });
-  } else {
-    console.error("Calendly widget is not loaded yet.");
-  }
-}}
+          if (typeof window !== "undefined" && window.Calendly?.initPopupWidget) {
+            window.Calendly.initPopupWidget({
+              url: "https://calendly.com/founder-voyage-forge/30min?hide_event_type_details=1&hide_gdpr_banner=1",
+            });
+          } else {
+            console.error("Calendly widget is not loaded yet.");
+          }
+        }}
 
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -217,11 +218,14 @@ export default function Home() {
       >
         \ud83d\uddd3 Schedule a Call
       </motion.button>
+      
 
       <footer className="py-6 text-center bg-gray-950 border-t border-gray-700">
         <p className="text-gray-400">&copy; {new Date().getFullYear()} Travel CMS. All rights reserved.</p>
 
       </footer>
+      <Analytics/>
     </>
+
   );
 }
