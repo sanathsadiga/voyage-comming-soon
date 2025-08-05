@@ -66,23 +66,7 @@ export default function Home() {
   return (
     <>
       <Analytics />
-      <Head>
-        <title>Travel CMS – Coming Soon</title>
-        <meta
-          name="description"
-          content="The ultimate CMS for tours and travel websites – with itineraries, booking engine, and modern widgets."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="Travel CMS – Coming Soon" />
-        <meta
-          property="og:description"
-          content="Build beautiful travel websites with itineraries, booking engine and more!"
-        />
-        <meta property="og:image" content="/og-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://voyage-forge.com/" />
-      </Head>
+      
 
       {/* HERO SECTION */}
       <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-700 via-indigo-800 to-blue-900 text-center relative overflow-hidden px-4">
