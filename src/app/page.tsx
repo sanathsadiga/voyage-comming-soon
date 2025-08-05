@@ -145,7 +145,7 @@ export default function Home() {
 
         {submitted ? (
           <div className="max-w-xl mx-auto bg-white/10 p-8 rounded-xl text-green-300 text-lg font-semibold border border-white/20 shadow-xl">
-            \ud83c\udf89 Thank you for joining the waitlist! We'll be in touch soon.
+            \ud83c\udf89 Thank you for joining the waitlist! We&apos;ll be in touch soon.
           </div>
         ) : (
           <form
