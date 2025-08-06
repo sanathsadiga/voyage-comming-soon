@@ -13,7 +13,7 @@ declare global {
     Calendly: {
       initPopupWidget?: (options: { url: string }) => void;
     };
-
+fbq?: (...args: any[]) => void; // 👈 Add this line
   }
 }
 
@@ -22,37 +22,47 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+  e.preventDefault();
+  setLoading(true);
 
-    if (formData.get("company")) {
-      setLoading(false);
-      return;
-    }
+  const form = e.currentTarget;
+  const formData = new FormData(form);
 
-    try {
-      const res = await fetch(
-        "https://hook.eu2.make.com/v9k7sdj2vallvrvnm4abbsdp3prseiix",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      if (res.ok) {
-        setSubmitted(true);
-        form.reset();
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
-    } catch (err) {
-      alert("Network error. Please try again later.");
-    }
-
+  if (formData.get("company")) {
     setLoading(false);
-  };
+    return;
+  }
+
+  try {
+    const res = await fetch(
+      "https://hook.eu2.make.com/v9k7sdj2vallvrvnm4abbsdp3prseiix",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    if (res.ok) {
+      setSubmitted(true);
+      form.reset();
+
+      // ✅ Track Lead Event after successful response
+      if (typeof window !== "undefined" && window.fbq) {
+        window.fbq("track", "Lead", {
+          value: 100,
+          currency: "INR",
+        });
+      }
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  } catch (err) {
+    alert("Network error. Please try again later.");
+  }
+
+  setLoading(false);
+};
+
 
   useEffect(() => {
     const link = document.createElement("link");
@@ -89,6 +99,8 @@ export default function Home() {
   }}
 />
 
+
+
 <noscript>
   <img
     height="1"
@@ -97,6 +109,8 @@ export default function Home() {
     src="https://www.facebook.com/tr?id=1258054316331739&ev=PageView&noscript=1"
   />
 </noscript>
+
+
 
       <Script
         strategy="afterInteractive"
