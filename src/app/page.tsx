@@ -13,7 +13,8 @@ declare global {
     Calendly: {
       initPopupWidget?: (options: { url: string }) => void;
     };
-fbq?: (...args: any[]) => void; // 👈 Add this line
+fbq?: (...args: [string, string, Record<string, unknown>?]) => void;
+
   }
 }
 
