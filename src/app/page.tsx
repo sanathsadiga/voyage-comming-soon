@@ -69,17 +69,44 @@ export default function Home() {
   return (
     <>
       <Analytics />
-      <SpeedInsights/>
-      
-      <Script
-  strategy="afterInteractive"
-  src={`https://www.googletagmanager.com/gtag/js?id=G-D5K3W462PN`}
-/>
+      <SpeedInsights />
 <Script
-  id="gtag-init"
+  id="facebook-pixel"
   strategy="afterInteractive"
   dangerouslySetInnerHTML={{
     __html: `
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1258054316331739');
+      fbq('track', 'PageView');
+    `,
+  }}
+/>
+
+<noscript>
+  <img
+    height="1"
+    width="1"
+    style={{ display: 'none' }}
+    src="https://www.facebook.com/tr?id=1258054316331739&ev=PageView&noscript=1"
+  />
+</noscript>
+
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-D5K3W462PN`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -87,8 +114,8 @@ export default function Home() {
         page_path: window.location.pathname,
       });
     `,
-  }}
-/>
+        }}
+      />
 
       {/* HERO SECTION */}
       <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-700 via-indigo-800 to-blue-900 text-center relative overflow-hidden px-4">
@@ -224,15 +251,27 @@ export default function Home() {
       >
         \ud83d\uddd3 Schedule a Call
       </motion.button>
-      
+
 
       <footer className="py-6 text-center bg-gray-950 border-t border-gray-700">
         <p className="text-gray-400">&copy; {new Date().getFullYear()} Travel CMS. All rights reserved.</p>
+        <a
+          href="https://www.producthunt.com/products/travel-cms?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-travel&#0045;cms"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block transition-transform hover:scale-105"
+        >
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1001948&theme=dark&t=1754409285494"
+            alt="Travel CMS - Coming soon | Product Hunt"
+            className="w-full max-w-xs mx-auto"
+          />
+        </a>
 
       </footer>
-      <SpeedInsights/>
-      <Analytics/>
-      
+      <SpeedInsights />
+      <Analytics />
+
     </>
 
   );
