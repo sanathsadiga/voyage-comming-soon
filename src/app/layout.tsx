@@ -35,11 +35,10 @@ export const metadata = {
     card: "summary_large_image",
     title: "Travel CMS – Coming Soon",
     description: "Build beautiful travel websites with itineraries, booking engine and more!",
-    images: ["https://voyage-forge.com/og-image.png"],
+    images: ["https://res.cloudinary.com/dp3fvdwse/image/upload/v1754218499/Voyage_Forge_Company_laudwl.jpg"],
   },
   metadataBase: new URL("https://voyage-forge.com"),
 };
-
 
 export default function RootLayout({
   children,
