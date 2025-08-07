@@ -139,26 +139,26 @@ export default function Home() {
         }}
       />
 
-     <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+      <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-gray-200 px-6 py-4 flex justify-between items-center">
 
-  <div className="flex items-center gap-2">
-  <Image
-  src="/vo.png"
-  alt="Logo"
-  width={40}
-  height={40}
-  className="h-10 w-auto object-contain"
-/>
+        <div className="flex items-center gap-2">
+          <Image
+            src="/vo.png"
+            alt="Logo"
+            width={40}
+            height={40}
+            className="h-10 w-auto object-contain"
+          />
 
-</div>
-  <button
-  onClick={scrollToCalendly}
-  className="bg-black text-white font-medium px-6 py-2 rounded-full border border-black hover:bg-transparent hover:text-black transition-all duration-200"
->
-  Schedule a Call
-</button>
+        </div>
+        <button
+          onClick={scrollToCalendly}
+          className="bg-black text-white font-medium px-6 py-2 rounded-full border border-black hover:bg-transparent hover:text-black transition-all duration-200"
+        >
+          Get Early Access – 100% Free
+        </button>
 
-</header>
+      </header>
 
 
 
@@ -216,7 +216,7 @@ export default function Home() {
       </section>
 
       {/* WAITLIST FORM */}
-      <section className="py-20 px-4 bg-gradient-to-br from-indigo-900 via-purple-800 to-fuchsia-900 text-center">
+      <section ref={calendlyRef} className="py-20 px-4 bg-gradient-to-br from-indigo-900 via-purple-800 to-fuchsia-900 text-center">
         <h2 className="text-3xl font-bold mb-6 text-white">Join Our Waitlist</h2>
         <p className="text-gray-300 mb-10">
           Be the first to know when we launch. We&rsquo;ll also give you early access perks!
@@ -266,7 +266,7 @@ export default function Home() {
       </section>
 
       {/* CALENDLY EMBED */}
-      <section ref={calendlyRef} className="py-20 px-4 bg-gray-900 text-center">
+      <section  className="py-20 px-4 bg-gray-900 text-center">
 
         <h2 className="text-3xl font-bold mb-6 text-white">Book a Call</h2>
         <p className="text-gray-300 mb-6">Want to discuss your project or use-case?</p>
