@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
+import Image from "next/image";
+
 import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script";
@@ -13,7 +15,7 @@ declare global {
     Calendly: {
       initPopupWidget?: (options: { url: string }) => void;
     };
-fbq?: (...args: [string, string, Record<string, unknown>?]) => void;
+    fbq?: (...args: [string, string, Record<string, unknown>?]) => void;
 
   }
 }
@@ -21,48 +23,53 @@ fbq?: (...args: [string, string, Record<string, unknown>?]) => void;
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const calendlyRef = useRef<HTMLDivElement>(null);
+
+  const scrollToCalendly = () => {
+    calendlyRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setLoading(true);
+    e.preventDefault();
+    setLoading(true);
 
-  const form = e.currentTarget;
-  const formData = new FormData(form);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-  if (formData.get("company")) {
-    setLoading(false);
-    return;
-  }
-
-  try {
-    const res = await fetch(
-      "https://hook.eu2.make.com/v9k7sdj2vallvrvnm4abbsdp3prseiix",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    if (res.ok) {
-      setSubmitted(true);
-      form.reset();
-
-      // ✅ Track Lead Event after successful response
-      if (typeof window !== "undefined" && window.fbq) {
-        window.fbq("track", "Lead", {
-          value: 100,
-          currency: "INR",
-        });
-      }
-    } else {
-      alert("Something went wrong. Please try again.");
+    if (formData.get("company")) {
+      setLoading(false);
+      return;
     }
-  } catch (err) {
-    alert("Network error. Please try again later.");
-  }
 
-  setLoading(false);
-};
+    try {
+      const res = await fetch(
+        "https://hook.eu2.make.com/v9k7sdj2vallvrvnm4abbsdp3prseiix",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (res.ok) {
+        setSubmitted(true);
+        form.reset();
+
+        // ✅ Track Lead Event after successful response
+        if (typeof window !== "undefined" && window.fbq) {
+          window.fbq("track", "Lead", {
+            value: 100,
+            currency: "INR",
+          });
+        }
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      alert("Network error. Please try again later.");
+    }
+
+    setLoading(false);
+  };
 
 
   useEffect(() => {
@@ -81,11 +88,11 @@ export default function Home() {
     <>
       <Analytics />
       <SpeedInsights />
-<Script
-  id="facebook-pixel"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: `
+      <Script
+        id="facebook-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -97,19 +104,19 @@ export default function Home() {
       fbq('init', '1258054316331739');
       fbq('track', 'PageView');
     `,
-  }}
-/>
+        }}
+      />
 
 
 
-<noscript>
-  <img
-    height="1"
-    width="1"
-    style={{ display: 'none' }}
-    src="https://www.facebook.com/tr?id=1258054316331739&ev=PageView&noscript=1"
-  />
-</noscript>
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: 'none' }}
+          src="https://www.facebook.com/tr?id=1258054316331739&ev=PageView&noscript=1"
+        />
+      </noscript>
 
 
 
@@ -131,6 +138,29 @@ export default function Home() {
     `,
         }}
       />
+
+     <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+
+  <div className="flex items-center gap-2">
+  <Image
+  src="/vo.png"
+  alt="Logo"
+  width={40}
+  height={40}
+  className="h-10 w-auto object-contain"
+/>
+
+</div>
+  <button
+  onClick={scrollToCalendly}
+  className="bg-black text-white font-medium px-6 py-2 rounded-full border border-black hover:bg-transparent hover:text-black transition-all duration-200"
+>
+  Schedule a Call
+</button>
+
+</header>
+
+
 
       {/* HERO SECTION */}
       <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-700 via-indigo-800 to-blue-900 text-center relative overflow-hidden px-4">
@@ -236,7 +266,8 @@ export default function Home() {
       </section>
 
       {/* CALENDLY EMBED */}
-      <section className="py-20 px-4 bg-gray-900 text-center">
+      <section ref={calendlyRef} className="py-20 px-4 bg-gray-900 text-center">
+
         <h2 className="text-3xl font-bold mb-6 text-white">Book a Call</h2>
         <p className="text-gray-300 mb-6">Want to discuss your project or use-case?</p>
         <div className="max-w-4xl mx-auto">
