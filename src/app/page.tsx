@@ -24,9 +24,14 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const calendlyRef = useRef<HTMLDivElement>(null);
+  const WaitlistRefs = useRef<HTMLDivElement>(null);
 
   const scrollToCalendly = () => {
     calendlyRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToWaitlist = () => {
+    WaitlistRefs.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -139,61 +144,130 @@ export default function Home() {
         }}
       />
 
-      <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+     
+     <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-gray-200 px-4 py-3 flex flex-wrap items-center justify-between">
+  <div className="flex items-center gap-2 flex-shrink-0">
+    <Image
+      src="/vo.png"
+      alt="Logo"
+      width={40}
+      height={40}
+      className="h-10 w-auto object-contain"
+    />
+  </div>
+  
+  {/* Buttons container */}
+  <div className="flex gap-3 mt-2 sm:mt-0 w-full sm:w-auto justify-end sm:justify-start">
+    <button
+      onClick={scrollToWaitlist}
+      className="flex-1 sm:flex-none bg-black text-white text-sm font-medium px-4 py-2 rounded-full border border-black hover:bg-transparent hover:text-black transition-all"
+    >
+      Book Call
+    </button>
+    <a href="#waitlist" onClick={scrollToCalendly}>
+      <button className="flex-1 sm:flex-none bg-yellow-400 text-black text-sm font-medium px-4 py-2 rounded-full hover:bg-yellow-500 transition-all">
+        Join Waitlist
+      </button>
+    </a>
+  </div>
+</header>
 
-        <div className="flex items-center gap-2">
-          <Image
-            src="/vo.png"
-            alt="Logo"
-            width={40}
-            height={40}
-            className="h-10 w-auto object-contain"
-          />
 
-        </div>
+
+
+    <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 px-4 sm:px-8 pt-24 pb-20 overflow-hidden">
+  {/* Modern background elements */}
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-10 left-10 w-64 h-64 bg-purple-600 opacity-10 rounded-full blur-[100px] animate-float"></div>
+    <div className="absolute bottom-20 right-20 w-80 h-80 bg-yellow-400 opacity-10 rounded-full blur-[100px] animate-float animation-delay-2000"></div>
+    <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-blue-500 opacity-05 rounded-full blur-[120px] animate-float animation-delay-3000"></div>
+    
+    {/* Subtle grid texture */}
+    <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==')]"></div>
+  </div>
+
+  {/* Main content container - centered without preview */}
+  <div className="relative z-10 max-w-4xl mx-auto px-4 w-full mt-10 sm:mt-0">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-center"
+    >
+      {/* Early access badge */}
+      <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
+        <span className="relative flex h-2 w-2 mr-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+        </span>
+        <span className="text-sm font-medium text-white">Early Access - Limited Time</span>
+      </div>
+
+      {/* Headline with gradient accent */}
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
+        <span className="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+          Launch Your Travel Website
+        </span><br />
+        in Minutes, Not Weeks
+      </h1>
+
+      {/* Subheading */}
+      <p className="text-lg sm:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+        Get everything you need to showcase your travel business online - beautiful website, SEO optimization, and itinerary tools. 
+        <span className="block mt-3 font-semibold text-yellow-300">Free during early access. No credit card required.</span>
+      </p>
+
+      {/* Countdown timer - more prominent */}
+      <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 mb-8 inline-flex items-center">
+        <svg className="w-5 h-5 mr-2 text-yellow-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+        </svg>
+        <span className="font-medium text-white">Early access ends in: <span className="font-bold text-yellow-300">7 days</span></span>
+      </div>
+
+      {/* CTA buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
         <button
           onClick={scrollToCalendly}
-          className="bg-black text-white font-medium px-6 py-2 rounded-full border border-black hover:bg-transparent hover:text-black transition-all duration-200"
+          className="relative group flex-1 sm:flex-none flex items-center justify-center px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden max-w-xs mx-auto sm:mx-0 w-full"
         >
-          Get Early Access – 100% Free
+          <span className="relative z-10">Join Free Waitlist</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         </button>
-
-      </header>
-
-
-
-      {/* HERO SECTION */}
-      <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-700 via-indigo-800 to-blue-900 text-center relative overflow-hidden px-4">
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="w-[300%] h-full animate-clouds absolute top-0 left-0">
-            <svg
-              className="w-full h-full"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              viewBox="0 0 1440 320"
-            >
-              <path
-                fill="#ffffff10"
-                d="M0,160L60,165.3C120,171,240,181,360,181.3C480,181,600,171,720,160C840,149,960,139,1080,144C1200,149,1320,171,1380,181.3L1440,192V320H1380C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320H0Z"
-              />
-            </svg>
-          </div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="z-10"
+        <button
+          onClick={scrollToWaitlist}
+          className="relative group flex-1 sm:flex-none flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/30 hover:border-white/50 text-white font-semibold rounded-full transition-all duration-300 hover:bg-white/10 backdrop-blur-sm max-w-xs mx-auto sm:mx-0 w-full"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Build Modern Travel Websites with <span className="text-yellow-400">Ease</span>
-          </h1>
-          <p className="text-lg md:text-2xl mb-8 max-w-2xl mx-auto text-gray-300">
-            Our powerful CMS platform is launching soon – designed for tour operators, travel agencies & adventure brands.
-          </p>
-        </motion.div>
-      </section>
+          <span className="relative z-10">See How It Works</span>
+          <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </button>
+      </div>
+
+      {/* Features list - optimized for mobile */}
+      <div className="grid grid-cols-2 sm:flex sm:flex-row justify-center gap-4 sm:gap-6 text-sm text-white/80">
+        <div className="flex items-center justify-center sm:justify-start">
+          <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+          No coding
+        </div>
+        <div className="flex items-center justify-center sm:justify-start">
+          <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+          SEO ready
+        </div>
+        <div className="flex items-center justify-center sm:justify-start">
+          <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+          Mobile perfect
+        </div>
+        <div className="flex items-center justify-center sm:justify-start">
+          <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+          Free templates
+        </div>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
+
+
 
       {/* FEATURES SECTION */}
       <section className="py-20 bg-gray-950 px-4 text-center">
@@ -215,24 +289,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WAITLIST FORM */}
-      <section ref={calendlyRef} className="py-20 px-4 bg-gradient-to-br from-indigo-900 via-purple-800 to-fuchsia-900 text-center">
-        <h2 className="text-3xl font-bold mb-6 text-white">Join Our Waitlist</h2>
+      <section
+        id="waitlist"
+        ref={calendlyRef}
+        className="py-20 px-4 bg-gradient-to-br from-indigo-900 via-purple-800 to-fuchsia-900 text-center"
+      >
+        <h2 className="text-3xl font-bold mb-6 text-white">
+          Join Our Waitlist Today
+        </h2>
         <p className="text-gray-300 mb-10">
-          Be the first to know when we launch. We&rsquo;ll also give you early access perks!
+          Be the first to know when we launch — and receive exclusive early
+          access bonuses.
         </p>
-
 
         {submitted ? (
           <div className="max-w-xl mx-auto bg-white/10 p-8 rounded-xl text-green-300 text-lg font-semibold border border-white/20 shadow-xl">
-            \ud83c\udf89 Thank you for joining the waitlist! We&apos;ll be in touch soon.
+            🎉 Thank you! We’ll be in touch soon with your early access perks.
           </div>
         ) : (
           <form
             onSubmit={handleSubmit}
             className="max-w-xl mx-auto backdrop-blur-sm bg-white/10 p-8 rounded-xl space-y-4 border border-white/20 shadow-xl"
           >
-            <input type="text" name="company" className="hidden" autoComplete="off" tabIndex={-1} />
+            <input
+              type="text"
+              name="company"
+              className="hidden"
+              autoComplete="off"
+              tabIndex={-1}
+            />
             <input
               type="text"
               name="name"
@@ -247,34 +332,33 @@ export default function Home() {
               required
               className="w-full p-3 rounded bg-white/80 text-black focus:outline-none focus:ring-2 focus:ring-yellow-300"
             />
-            <textarea
-              name="message"
-              placeholder="Tell us about your travel business..."
-              rows={4}
-              className="w-full p-3 rounded bg-white/80 text-black focus:outline-none focus:ring-2 focus:ring-yellow-300"
-            ></textarea>
             <button
               type="submit"
               disabled={loading}
-              className={`$${loading ? "bg-yellow-300" : "bg-yellow-400 hover:bg-yellow-500"
-                } text-black font-bold py-3 px-6 rounded transition w-full`}
+              className={`${
+                loading ? "bg-yellow-300" : "bg-yellow-400 hover:bg-yellow-500"
+              } text-black font-bold py-3 px-6 rounded transition w-full`}
             >
-              {loading ? "Submitting..." : "Join Waitlist"}
+              {loading ? "Submitting..." : "Join Waitlist Now"}
             </button>
+            <p className="text-sm text-gray-300">
+              ✅ No spam. Cancel anytime. You’ll also receive our{" "}
+              <span className="underline">Free Travel Website Launch Guide</span>.
+            </p>
           </form>
         )}
       </section>
 
       {/* CALENDLY EMBED */}
-      <section  className="py-20 px-4 bg-gray-900 text-center">
+      <section ref={WaitlistRefs} className="py-20 px-4 bg-gray-900 text-center">
 
         <h2 className="text-3xl font-bold mb-6 text-white">Book a Call</h2>
-        <p className="text-gray-300 mb-6">Want to discuss your project or use-case?</p>
+        <p className="text-gray-300 mb-6">Let’s discuss your travel business goals & how we can help.</p>
         <div className="max-w-4xl mx-auto">
           <div
             className="calendly-inline-widget w-full"
             data-url="https://calendly.com/founder-voyage-forge/30min"
-            style={{ minWidth: "320px", height: "700px" }}
+            style={{ minWidth: "320px", height: "900px" }}
           ></div>
         </div>
       </section>
@@ -297,23 +381,13 @@ export default function Home() {
       >
         \ud83d\uddd3 Schedule a Call
       </motion.button>
+      
 
 
-      <footer className="py-6 text-center bg-gray-950 border-t border-gray-700">
-        <p className="text-gray-400">&copy; {new Date().getFullYear()} Travel CMS. All rights reserved.</p>
-        <a
-          href="https://www.producthunt.com/products/travel-cms?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-travel&#0045;cms"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block transition-transform hover:scale-105"
-        >
-          <img
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1001948&theme=dark&t=1754409285494"
-            alt="Travel CMS - Coming soon | Product Hunt"
-            className="w-full max-w-xs mx-auto"
-          />
-        </a>
-
+       <footer className="py-6 text-center bg-gray-950 border-t border-gray-700">
+        <p className="text-gray-400">
+          &copy; {new Date().getFullYear()} Travel CMS. All rights reserved.
+        </p>
       </footer>
       <SpeedInsights />
       <Analytics />
