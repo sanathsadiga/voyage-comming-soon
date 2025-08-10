@@ -41,7 +41,7 @@ export default function AboutUs() {
           <div className="bg-gray-900 p-8 rounded-xl shadow-lg">
             <h2 className="text-2xl font-semibold text-white mb-6">Our Mission</h2>
             <p className="text-gray-300 mb-8">
-              We're on a mission to make it effortless for travel businesses to establish a stunning 
+              We&apos;re on a mission to make it effortless for travel businesses to establish a stunning 
               online presence. Our platform removes the technical barriers, so you can focus on what 
               you do best - creating amazing travel experiences.
             </p>
