@@ -131,7 +131,7 @@ export default function Home() {
       } else {
         alert("Something went wrong. Please try again.");
       }
-    } catch (err) {
+    } catch  {
       alert("Network error. Please try again later.");
     }
 

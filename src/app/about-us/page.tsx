@@ -4,7 +4,7 @@ import Footer from '@/app/components/Footer';
 
 export const metadata: Metadata = {
   title: "About Us | Travel CMS",
-  description: "Learn about our mission to revolutionize travel website creation with our powerful CMS platform.",
+  description: `Learn about our mission to revolutionize travel website creation with our powerful CMS platform.`,
   openGraph: {
     title: "About Us | Travel CMS",
     description: "Discover the team and vision behind Travel CMS - the modern solution for travel businesses.",
