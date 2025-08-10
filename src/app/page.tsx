@@ -46,7 +46,7 @@ const CookieConsent = () => {
           <h3 className="text-white font-medium mb-2">We use cookies</h3>
           <p className="text-gray-300 text-sm">
             We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
-            By clicking "Accept All", you consent to our use of cookies. See our{' '}
+            By clicking &quot;Accept All&quot;, you consent to our use of cookies. See our{' '}
             <Link href="/privacy-policy" className="text-yellow-400 hover:underline">
               Privacy Policy
             </Link> for more details.

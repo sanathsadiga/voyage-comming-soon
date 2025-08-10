@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
-Sitemap: https://yourdomain.com/sitemap.xml
+# Host
+Host: https://voyage-forge.com/
+
+# Sitemaps
+Sitemap: https://voyage-forge.com/sitemap.xml
