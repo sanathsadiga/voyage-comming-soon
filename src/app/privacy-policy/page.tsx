@@ -4,7 +4,7 @@ import Footer from '@/app/components/Footer';
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Travel CMS",
-  description: "Read our Privacy Policy to understand how we collect, use, and protect your data.",
+  description: `Read our Privacy Policy to understand how we collect, use, and protect your data.`,
   openGraph: {
     title: "Privacy Policy | Travel CMS",
     description: "Learn how Travel CMS handles your personal information and data security.",

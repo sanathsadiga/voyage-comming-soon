@@ -45,7 +45,7 @@ const CookieConsent = () => {
         <div className="flex-1">
           <h3 className="text-white font-medium mb-2">We use cookies</h3>
           <p className="text-gray-300 text-sm">
-            We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
+            We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
             By clicking "Accept All", you consent to our use of cookies. See our{' '}
             <Link href="/privacy-policy" className="text-yellow-400 hover:underline">
               Privacy Policy
@@ -131,7 +131,7 @@ export default function Home() {
       } else {
         alert("Something went wrong. Please try again.");
       }
-    } catch  {
+    } catch {
       alert("Network error. Please try again later.");
     }
 
@@ -154,7 +154,7 @@ export default function Home() {
   return (
     <>
       <Analytics />
-      
+
       <SpeedInsights />
       <Script
         id="facebook-pixel"
@@ -178,11 +178,13 @@ export default function Home() {
 
 
       <noscript>
-        <img
-          height="1"
-          width="1"
+        <Image
+          height={1}
+          width={1}
           style={{ display: 'none' }}
           src="https://www.facebook.com/tr?id=1258054316331739&ev=PageView&noscript=1"
+          alt="Facebook Pixel"
+          unoptimized // Add this since it's a tracking pixel
         />
       </noscript>
 
@@ -207,108 +209,108 @@ export default function Home() {
         }}
       />
 
-     
-    <Header />
+
+      <Header />
 
 
 
 
-    <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 px-4 sm:px-8 pt-24 pb-20 overflow-hidden">
-  {/* Modern background elements */}
-  <div className="absolute inset-0 overflow-hidden">
-    <div className="absolute top-10 left-10 w-64 h-64 bg-purple-600 opacity-10 rounded-full blur-[100px] animate-float"></div>
-    <div className="absolute bottom-20 right-20 w-80 h-80 bg-yellow-400 opacity-10 rounded-full blur-[100px] animate-float animation-delay-2000"></div>
-    <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-blue-500 opacity-05 rounded-full blur-[120px] animate-float animation-delay-3000"></div>
-    
-    {/* Subtle grid texture */}
-    <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==')]"></div>
-  </div>
+      <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 px-4 sm:px-8 pt-24 pb-20 overflow-hidden">
+        {/* Modern background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-purple-600 opacity-10 rounded-full blur-[100px] animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-yellow-400 opacity-10 rounded-full blur-[100px] animate-float animation-delay-2000"></div>
+          <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-blue-500 opacity-05 rounded-full blur-[120px] animate-float animation-delay-3000"></div>
 
-  {/* Main content container - centered without preview */}
-  <div className="relative z-10 max-w-4xl mx-auto px-4 w-full mt-10 sm:mt-0">
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="text-center"
-    >
-      {/* Early access badge */}
-      <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
-        <span className="relative flex h-2 w-2 mr-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
-        </span>
-        <span className="text-sm font-medium text-white">Early Access - Limited Time</span>
-      </div>
-
-      {/* Headline with gradient accent */}
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
-        <span className="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-          Launch Your Travel Website
-        </span><br />
-        in Minutes, Not Weeks
-      </h1>
-
-      {/* Subheading */}
-      <p className="text-lg sm:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-        Get everything you need to showcase your travel business online - beautiful website, SEO optimization, and itinerary tools. 
-        <span className="block mt-3 font-semibold text-yellow-300">Free during early access. No credit card required.</span>
-      </p>
-
-      {/* Countdown timer - more prominent */}
-      <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 mb-8 inline-flex items-center">
-        <svg className="w-5 h-5 mr-2 text-yellow-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-        </svg>
-        <span className="font-medium text-white">Early access ends in: <span className="font-bold text-yellow-300">7 days</span></span>
-      </div>
-
-      {/* CTA buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-        <button
-          onClick={scrollToCalendly}
-          className="relative group flex-1 sm:flex-none flex items-center justify-center px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden max-w-xs mx-auto sm:mx-0 w-full"
-        >
-          <span className="relative z-10">Join Free Waitlist</span>
-          <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        </button>
-        <button
-          onClick={scrollToWaitlist}
-          className="relative group flex-1 sm:flex-none flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/30 hover:border-white/50 text-white font-semibold rounded-full transition-all duration-300 hover:bg-white/10 backdrop-blur-sm max-w-xs mx-auto sm:mx-0 w-full"
-        >
-          <span className="relative z-10">See How It Works</span>
-          <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        </button>
-      </div>
-
-      {/* Features list - optimized for mobile */}
-      <div className="grid grid-cols-2 sm:flex sm:flex-row justify-center gap-4 sm:gap-6 text-sm text-white/80">
-        <div className="flex items-center justify-center sm:justify-start">
-          <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-          No coding
+          {/* Subtle grid texture */}
+          <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==')]"></div>
         </div>
-        <div className="flex items-center justify-center sm:justify-start">
-          <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-          SEO ready
+
+        {/* Main content container - centered without preview */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 w-full mt-10 sm:mt-0">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            {/* Early access badge */}
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
+              <span className="relative flex h-2 w-2 mr-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+              </span>
+              <span className="text-sm font-medium text-white">Early Access - Limited Time</span>
+            </div>
+
+            {/* Headline with gradient accent */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
+              <span className="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+                Launch Your Travel Website
+              </span><br />
+              in Minutes, Not Weeks
+            </h1>
+
+            {/* Subheading */}
+            <p className="text-lg sm:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+              Get everything you need to showcase your travel business online - beautiful website, SEO optimization, and itinerary tools.
+              <span className="block mt-3 font-semibold text-yellow-300">Free during early access. No credit card required.</span>
+            </p>
+
+            {/* Countdown timer - more prominent */}
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 mb-8 inline-flex items-center">
+              <svg className="w-5 h-5 mr-2 text-yellow-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+              </svg>
+              <span className="font-medium text-white">Early access ends in: <span className="font-bold text-yellow-300">7 days</span></span>
+            </div>
+
+            {/* CTA buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+              <button
+                onClick={scrollToCalendly}
+                className="relative group flex-1 sm:flex-none flex items-center justify-center px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden max-w-xs mx-auto sm:mx-0 w-full"
+              >
+                <span className="relative z-10">Join Free Waitlist</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </button>
+              <button
+                onClick={scrollToWaitlist}
+                className="relative group flex-1 sm:flex-none flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/30 hover:border-white/50 text-white font-semibold rounded-full transition-all duration-300 hover:bg-white/10 backdrop-blur-sm max-w-xs mx-auto sm:mx-0 w-full"
+              >
+                <span className="relative z-10">See How It Works</span>
+                <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </button>
+            </div>
+
+            {/* Features list - optimized for mobile */}
+            <div className="grid grid-cols-2 sm:flex sm:flex-row justify-center gap-4 sm:gap-6 text-sm text-white/80">
+              <div className="flex items-center justify-center sm:justify-start">
+                <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                No coding
+              </div>
+              <div className="flex items-center justify-center sm:justify-start">
+                <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                SEO ready
+              </div>
+              <div className="flex items-center justify-center sm:justify-start">
+                <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                Mobile perfect
+              </div>
+              <div className="flex items-center justify-center sm:justify-start">
+                <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                Free templates
+              </div>
+            </div>
+          </motion.div>
         </div>
-        <div className="flex items-center justify-center sm:justify-start">
-          <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-          Mobile perfect
-        </div>
-        <div className="flex items-center justify-center sm:justify-start">
-          <svg className="w-4 h-4 mr-1 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-          Free templates
-        </div>
-      </div>
-    </motion.div>
-  </div>
-</section>
+      </section>
 
 
 
 
       {/* FEATURES SECTION */}
-      <section id="features"className="py-20 bg-gray-950 px-4 text-center">
+      <section id="features" className="py-20 bg-gray-950 px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-white">What to Expect</h2>
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {[
@@ -373,9 +375,8 @@ export default function Home() {
             <button
               type="submit"
               disabled={loading}
-              className={`${
-                loading ? "bg-yellow-300" : "bg-yellow-400 hover:bg-yellow-500"
-              } text-black font-bold py-3 px-6 rounded transition w-full`}
+              className={`${loading ? "bg-yellow-300" : "bg-yellow-400 hover:bg-yellow-500"
+                } text-black font-bold py-3 px-6 rounded transition w-full`}
             >
               {loading ? "Submitting..." : "Join Waitlist Now"}
             </button>
@@ -388,7 +389,7 @@ export default function Home() {
       </section>
 
       {/* CALENDLY EMBED */}
-      <section id="calendly"ref={WaitlistRefs} className="py-20 px-4 bg-gray-900 text-center">
+      <section id="calendly" ref={WaitlistRefs} className="py-20 px-4 bg-gray-900 text-center">
 
         <h2 className="text-3xl font-bold mb-6 text-white">Book a Call</h2>
         <p className="text-gray-300 mb-6">Let’s discuss your travel business goals & how we can help.</p>
@@ -419,13 +420,13 @@ export default function Home() {
       >
         \ud83d\uddd3 Schedule a Call
       </motion.button>
-      
 
 
-       <Footer />
+
+      <Footer />
       <SpeedInsights />
       <Analytics />
-        <CookieConsent />
+      <CookieConsent />
     </>
 
   );
