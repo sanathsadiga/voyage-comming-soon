@@ -3,30 +3,30 @@ import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 
 export const metadata: Metadata = {
-  title: "About Us | Travel CMS",
+  title: `About Us | Travel CMS`,
   description: `Learn about our mission to revolutionize travel website creation with our powerful CMS platform.`,
   openGraph: {
-    title: "About Us | Travel CMS",
-    description: "Discover the team and vision behind Travel CMS - the modern solution for travel businesses.",
-    url: "https://voyage-forge.com/about-us",
-    siteName: "Travel CMS",
+    title: `About Us | Travel CMS`,
+    description: `Discover the team and vision behind Travel CMS - the modern solution for travel businesses.`,
+    url: `https://voyage-forge.com/about-us`,
+    siteName: `Travel CMS`,
     images: [
       {
-        url: "https://res.cloudinary.com/dp3fvdwse/image/upload/v1754218499/Voyage_Forge_Company_laudwl.jpg",
+        url: `https://res.cloudinary.com/dp3fvdwse/image/upload/v1754218499/Voyage_Forge_Company_laudwl.jpg`,
         width: 1200,
         height: 630,
-        alt: "About Travel CMS",
+        alt: `About Travel CMS`,
       },
     ],
-    type: "website",
+    type: `website`,
   },
   twitter: {
-    card: "summary_large_image",
-    title: "About Us | Travel CMS",
-    description: "Discover the team and vision behind Travel CMS",
-    images: ["https://res.cloudinary.com/dp3fvdwse/image/upload/v1754218499/Voyage_Forge_Company_laudwl.jpg"],
+    card: `summary_large_image`,
+    title: `About Us | Travel CMS`,
+    description: `Discover the team and vision behind Travel CMS`,
+    images: [`https://res.cloudinary.com/dp3fvdwse/image/upload/v1754218499/Voyage_Forge_Company_laudwl.jpg`],
   },
-  metadataBase: new URL("https://voyage-forge.com"),
+  metadataBase: new URL(`https://voyage-forge.com`),
 };
 
 
