@@ -3,11 +3,73 @@
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import Header from '@/app/components/Header';
+import Footer from '@/app/components/Footer';
 
 import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Link from "next/link";
+
+// Add this component near the top of your file (after the imports)
+const CookieConsent = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+      setVisible(true);
+    }
+  }, []);
+
+  const acceptCookies = () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    setVisible(false);
+  };
+
+  const declineCookies = () => {
+    localStorage.setItem('cookieConsent', 'declined');
+    setVisible(false);
+  };
+
+  if (!visible) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="fixed bottom-4 left-4 right-4 max-w-2xl mx-auto bg-gray-800 border border-gray-700 rounded-lg shadow-xl p-6 z-50"
+    >
+      <div className="flex flex-col md:flex-row md:items-center gap-4">
+        <div className="flex-1">
+          <h3 className="text-white font-medium mb-2">We use cookies</h3>
+          <p className="text-gray-300 text-sm">
+            We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
+            By clicking "Accept All", you consent to our use of cookies. See our{' '}
+            <Link href="/privacy-policy" className="text-yellow-400 hover:underline">
+              Privacy Policy
+            </Link> for more details.
+          </p>
+        </div>
+        <div className="flex gap-3">
+          <button
+            onClick={declineCookies}
+            className="px-4 py-2 text-sm font-medium text-white bg-transparent border border-gray-600 rounded-lg hover:bg-gray-700 transition"
+          >
+            Decline
+          </button>
+          <button
+            onClick={acceptCookies}
+            className="px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition"
+          >
+            Accept All
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 
 declare global {
@@ -92,6 +154,7 @@ export default function Home() {
   return (
     <>
       <Analytics />
+      
       <SpeedInsights />
       <Script
         id="facebook-pixel"
@@ -145,32 +208,7 @@ export default function Home() {
       />
 
      
-     <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md border-b border-gray-200 px-4 py-3 flex flex-wrap items-center justify-between">
-  <div className="flex items-center gap-2 flex-shrink-0">
-    <Image
-      src="/vo.png"
-      alt="Logo"
-      width={40}
-      height={40}
-      className="h-10 w-auto object-contain"
-    />
-  </div>
-  
-  {/* Buttons container */}
-  <div className="flex gap-3 mt-2 sm:mt-0 w-full sm:w-auto justify-end sm:justify-start">
-    <button
-      onClick={scrollToWaitlist}
-      className="flex-1 sm:flex-none bg-black text-white text-sm font-medium px-4 py-2 rounded-full border border-black hover:bg-transparent hover:text-black transition-all"
-    >
-      Book Call
-    </button>
-    <a href="#waitlist" onClick={scrollToCalendly}>
-      <button className="flex-1 sm:flex-none bg-yellow-400 text-black text-sm font-medium px-4 py-2 rounded-full hover:bg-yellow-500 transition-all">
-        Join Waitlist
-      </button>
-    </a>
-  </div>
-</header>
+    <Header />
 
 
 
@@ -270,7 +308,7 @@ export default function Home() {
 
 
       {/* FEATURES SECTION */}
-      <section className="py-20 bg-gray-950 px-4 text-center">
+      <section id="features"className="py-20 bg-gray-950 px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-white">What to Expect</h2>
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {[
@@ -350,7 +388,7 @@ export default function Home() {
       </section>
 
       {/* CALENDLY EMBED */}
-      <section ref={WaitlistRefs} className="py-20 px-4 bg-gray-900 text-center">
+      <section id="calendly"ref={WaitlistRefs} className="py-20 px-4 bg-gray-900 text-center">
 
         <h2 className="text-3xl font-bold mb-6 text-white">Book a Call</h2>
         <p className="text-gray-300 mb-6">Let’s discuss your travel business goals & how we can help.</p>
@@ -384,14 +422,10 @@ export default function Home() {
       
 
 
-       <footer className="py-6 text-center bg-gray-950 border-t border-gray-700">
-        <p className="text-gray-400">
-          &copy; {new Date().getFullYear()} Travel CMS. All rights reserved.
-        </p>
-      </footer>
+       <Footer />
       <SpeedInsights />
       <Analytics />
-
+        <CookieConsent />
     </>
 
   );
